@@ -10,7 +10,7 @@
 		73DCADEE194B7ED700696409 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCADED194B7ED700696409 /* SocketIO.m */; };
 		73DCAE1E194B7FFB00696409 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCAE1D194B7FFB00696409 /* SIOSocket.m */; };
 		73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */; };
-		73DF8C37194F689300CAF960 /* Readme in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C36194F689300CAF960 /* Readme */; };
+		73DF8C39194F6EBB00CAF960 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8C38194F6EBB00CAF960 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		73DCAE1D194B7FFB00696409 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIOSocket.m; path = Source/SIOSocket.m; sourceTree = "<group>"; };
 		73DCAE20194B893200696409 /* socket.io.js.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = socket.io.js.h; path = Source/socket.io.js.h; sourceTree = "<group>"; };
 		73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SIOSocket.podspec; sourceTree = "<group>"; };
-		73DF8C36194F689300CAF960 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
+		73DF8C38194F6EBB00CAF960 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,7 @@
 		73DCADDD194B7ECE00696409 = {
 			isa = PBXGroup;
 			children = (
-				73DF8C36194F689300CAF960 /* Readme */,
+				73DF8C38194F6EBB00CAF960 /* README.md */,
 				73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */,
 				73DCAE1F194B7FFE00696409 /* Source */,
 				73DCADEA194B7ED700696409 /* SocketIO */,
@@ -137,7 +137,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73DF8C37194F689300CAF960 /* Readme in Resources */,
 				73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73DF8C39194F6EBB00CAF960 /* README.md in Sources */,
 				73DCAE1E194B7FFB00696409 /* SIOSocket.m in Sources */,
 				73DCADEE194B7ED700696409 /* SocketIO.m in Sources */,
 			);
