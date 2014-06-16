@@ -6,20 +6,114 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		73DCADEE194B7ED700696409 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCADED194B7ED700696409 /* SocketIO.m */; };
+		73DCAE1E194B7FFB00696409 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCAE1D194B7FFB00696409 /* SIOSocket.m */; };
+		73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */; };
+		73DF8C37194F689300CAF960 /* Readme in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C36194F689300CAF960 /* Readme */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		73DCADE8194B7ED700696409 /* SocketIO.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocketIO.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73DCADEC194B7ED700696409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73DCADED194B7ED700696409 /* SocketIO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
+		73DCAE1C194B7FFB00696409 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIOSocket.h; path = Source/SIOSocket.h; sourceTree = "<group>"; };
+		73DCAE1D194B7FFB00696409 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIOSocket.m; path = Source/SIOSocket.m; sourceTree = "<group>"; };
+		73DCAE20194B893200696409 /* socket.io.js.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = socket.io.js.h; path = Source/socket.io.js.h; sourceTree = "<group>"; };
+		73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SIOSocket.podspec; sourceTree = "<group>"; };
+		73DF8C36194F689300CAF960 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		73DCADE5194B7ED700696409 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		73DCADDD194B7ECE00696409 = {
 			isa = PBXGroup;
 			children = (
+				73DF8C36194F689300CAF960 /* Readme */,
+				73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */,
+				73DCAE1F194B7FFE00696409 /* Source */,
+				73DCADEA194B7ED700696409 /* SocketIO */,
+				73DCADE9194B7ED700696409 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		73DCADE9194B7ED700696409 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73DCADE8194B7ED700696409 /* SocketIO.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		73DCADEA194B7ED700696409 /* SocketIO */ = {
+			isa = PBXGroup;
+			children = (
+				73DCADED194B7ED700696409 /* SocketIO.m */,
+				73DCADEB194B7ED700696409 /* Supporting Files */,
+			);
+			path = SocketIO;
+			sourceTree = "<group>";
+		};
+		73DCADEB194B7ED700696409 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73DCADEC194B7ED700696409 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		73DCAE1F194B7FFE00696409 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				73DCAE1C194B7FFB00696409 /* SIOSocket.h */,
+				73DCAE1D194B7FFB00696409 /* SIOSocket.m */,
+				73DCAE20194B893200696409 /* socket.io.js.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		73DCADE7194B7ED700696409 /* SocketIO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73DCADEF194B7ED700696409 /* Build configuration list for PBXNativeTarget "SocketIO" */;
+			buildPhases = (
+				73DCADE4194B7ED700696409 /* Sources */,
+				73DCADE5194B7ED700696409 /* Frameworks */,
+				73DCADE6194B7ED700696409 /* Resources */,
+				73DF8C33194F620800CAF960 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SocketIO;
+			productName = SocketIO;
+			productReference = 73DCADE8194B7ED700696409 /* SocketIO.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		73DCADDE194B7ECE00696409 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
+				TargetAttributes = {
+					73DCADE7194B7ED700696409 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
 			};
 			buildConfigurationList = 73DCADE1194B7ECE00696409 /* Build configuration list for PBXProject "SocketIO" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -29,12 +123,54 @@
 				en,
 			);
 			mainGroup = 73DCADDD194B7ECE00696409;
+			productRefGroup = 73DCADE9194B7ED700696409 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				73DCADE7194B7ED700696409 /* SocketIO */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		73DCADE6194B7ED700696409 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DF8C37194F689300CAF960 /* Readme in Resources */,
+				73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73DF8C33194F620800CAF960 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "screen -A -m -d -S SocketIO  /usr/local/bin/node $SOURCE_ROOT/socket_tester/app.js &";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73DCADE4194B7ED700696409 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DCAE1E194B7FFB00696409 /* SIOSocket.m in Sources */,
+				73DCADEE194B7ED700696409 /* SocketIO.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		73DCADE2194B7ECE00696409 /* Debug */ = {
@@ -49,6 +185,97 @@
 			};
 			name = Release;
 		};
+		73DCADF0194B7ED700696409 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = SocketIO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SocketIO-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		73DCADF1194B7ED700696409 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = SocketIO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "SocketIO-Bridging-Header.h";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -57,6 +284,15 @@
 			buildConfigurations = (
 				73DCADE2194B7ECE00696409 /* Debug */,
 				73DCADE3194B7ECE00696409 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73DCADEF194B7ED700696409 /* Build configuration list for PBXNativeTarget "SocketIO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73DCADF0194B7ED700696409 /* Debug */,
+				73DCADF1194B7ED700696409 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
