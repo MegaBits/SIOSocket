@@ -11,7 +11,7 @@ SIOSocket can be added as a CocodaPod, submodule, or standalone dependency to an
 // ...
 [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
 {
-self.socket = socket;
+    self.socket = socket;
 }];
 ```
 
