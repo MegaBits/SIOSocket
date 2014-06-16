@@ -6,6 +6,5 @@ Pod::Spec.new do |s|
     s.source        = { :tag => "v0.0.1", :git => "https://github.com/MegaBits/SIOSocket.git"}
     s.platform      = :ios, "7.0"
     s.source_files  = "SocketIO/Source/*.{h,m}"
-    s.resources     = "SocketIO/*/*.{js,json}"
     s.requires_arc  = true
 end

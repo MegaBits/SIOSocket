@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		73DCADEE194B7ED700696409 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCADED194B7ED700696409 /* SocketIO.m */; };
-		73DCAE1E194B7FFB00696409 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCAE1D194B7FFB00696409 /* SIOSocket.m */; };
 		73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */; };
 		73DF8C39194F6EBB00CAF960 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8C38194F6EBB00CAF960 /* README.md */; };
+		73DF8C42194F738300CAF960 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8C40194F738300CAF960 /* SIOSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		73DCADE8194B7ED700696409 /* SocketIO.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocketIO.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73DCADEC194B7ED700696409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73DCADED194B7ED700696409 /* SocketIO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
-		73DCAE1C194B7FFB00696409 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIOSocket.h; path = Source/SIOSocket.h; sourceTree = "<group>"; };
-		73DCAE1D194B7FFB00696409 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIOSocket.m; path = Source/SIOSocket.m; sourceTree = "<group>"; };
-		73DCAE20194B893200696409 /* socket.io.js.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = socket.io.js.h; path = Source/socket.io.js.h; sourceTree = "<group>"; };
 		73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SIOSocket.podspec; sourceTree = "<group>"; };
 		73DF8C38194F6EBB00CAF960 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		73DF8C3F194F738300CAF960 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIOSocket.h; sourceTree = "<group>"; };
+		73DF8C40194F738300CAF960 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIOSocket.m; sourceTree = "<group>"; };
+		73DF8C41194F738300CAF960 /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.io.js.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +40,7 @@
 			children = (
 				73DF8C38194F6EBB00CAF960 /* README.md */,
 				73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */,
-				73DCAE1F194B7FFE00696409 /* Source */,
+				73DF8C3E194F738300CAF960 /* Source */,
 				73DCADEA194B7ED700696409 /* SocketIO */,
 				73DCADE9194B7ED700696409 /* Products */,
 			);
@@ -71,14 +71,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		73DCAE1F194B7FFE00696409 /* Source */ = {
+		73DF8C3E194F738300CAF960 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				73DCAE1C194B7FFB00696409 /* SIOSocket.h */,
-				73DCAE1D194B7FFB00696409 /* SIOSocket.m */,
-				73DCAE20194B893200696409 /* socket.io.js.h */,
+				73DF8C3F194F738300CAF960 /* SIOSocket.h */,
+				73DF8C40194F738300CAF960 /* SIOSocket.m */,
+				73DF8C41194F738300CAF960 /* socket.io.js.h */,
 			);
 			name = Source;
+			path = SocketIO/Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73DF8C39194F6EBB00CAF960 /* README.md in Sources */,
-				73DCAE1E194B7FFB00696409 /* SIOSocket.m in Sources */,
+				73DF8C42194F738300CAF960 /* SIOSocket.m in Sources */,
 				73DCADEE194B7ED700696409 /* SocketIO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
