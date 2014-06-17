@@ -31,8 +31,8 @@ static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, 
         hostURL,
         reconnection? @"true" : @"false",
         (attemptLimit == -1)? @"Infinity" : @(attemptLimit),
-        reconnectionDelay * MSEC_PER_SEC,
-        reconnectionDelayMax * MSEC_PER_SEC,
-        timeout * MSEC_PER_SEC
+        (int)(reconnectionDelay * MSEC_PER_SEC),
+        (int)(reconnectionDelayMax * MSEC_PER_SEC),
+        (int)(timeout * MSEC_PER_SEC)
     ];
 }
