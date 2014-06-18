@@ -14,7 +14,7 @@
 @interface SIOSocket ()
 
 @property UIWebView *javascriptWebView;
-@property (readonly) JSContext *javascriptContext;
+@property (nonatomic) JSContext *javascriptContext;
 
 @end
 
@@ -42,7 +42,18 @@
         return;
     }
 
-    socket.javascriptWebView = [[UIWebView alloc] init];
+    // Initialize web view
+    if (!NSClassFromString(@"WKWebView"))
+    {
+        socket.javascriptWebView = [[UIWebView alloc] init];
+        
+        // The hypothesis here is that, if WKWebView is present, a straight JS context should be used.
+        // (Similar to http://fossies.org/linux/WebKit/Source/WebKit2/UIProcess/API/Cocoa/WKWebView.mm line: 523)
+        // This should allow the socket.io client access to the raw WebKit JIT compiler.
+        // This process MUST be validated as functional and faster via unit testing.
+    }
+    
+    // Setup context
     [socket.javascriptContext setExceptionHandler: ^(JSContext *context, JSValue *errorValue)
     {
         NSLog(@"JSError: %@", errorValue);
@@ -118,7 +129,17 @@
 // Accessors
 - (JSContext *)javascriptContext
 {
-    return [self.javascriptWebView valueForKeyPath: @"documentView.webView.mainFrame.javaScriptContext"];
+    if (!NSClassFromString(@"WKWebView") && self.javascriptWebView)
+    {
+        return [self.javascriptWebView valueForKeyPath: @"documentView.webView.mainFrame.javaScriptContext"];
+    }
+    
+    if (!_javascriptContext)
+    {
+        _javascriptContext = [[JSContext alloc] init];
+    }
+    
+    return _javascriptContext;
 }
 
 // Event listeners
