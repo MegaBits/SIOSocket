@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		73DCADEE194B7ED700696409 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCADED194B7ED700696409 /* SocketIO.m */; };
 		73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */; };
-		73DF8C39194F6EBB00CAF960 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8C38194F6EBB00CAF960 /* README.md */; };
 		73DF8C42194F738300CAF960 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8C40194F738300CAF960 /* SIOSocket.m */; };
 /* End PBXBuildFile section */
 
@@ -92,7 +91,6 @@
 				73DCADE4194B7ED700696409 /* Sources */,
 				73DCADE5194B7ED700696409 /* Frameworks */,
 				73DCADE6194B7ED700696409 /* Resources */,
-				73DF8C33194F620800CAF960 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -144,28 +142,11 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		73DF8C33194F620800CAF960 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "screen -A -m -d -S SocketIO  /usr/local/bin/node $SOURCE_ROOT/socket_tester/app.js &";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		73DCADE4194B7ED700696409 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73DF8C39194F6EBB00CAF960 /* README.md in Sources */,
 				73DF8C42194F738300CAF960 /* SIOSocket.m in Sources */,
 				73DCADEE194B7ED700696409 /* SocketIO.m in Sources */,
 			);
