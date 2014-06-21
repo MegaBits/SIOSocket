@@ -10,6 +10,10 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "socket.io.js.h"
 
+#ifdef __IPHONE_8_0
+#import <WebKit/WebKit.h>
+#endif
+
 @interface SIOSocket ()
 
 @property UIWebView *javascriptWebView;
