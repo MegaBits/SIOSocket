@@ -8,7 +8,6 @@
 
 #import "SIOSocket.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <WebKit/WebKit.h>
 #import "socket.io.js.h"
 
 @interface SIOSocket ()
