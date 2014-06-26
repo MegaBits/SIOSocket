@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>452BF72F-AAD9-4D8A-8EB1-D5B869B2FE89</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SocketIO</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CC0D89B4-AB4A-414C-9955-5797500B387E</key>
+		<string>https://github.com/MegaBits/SIOSocket.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SocketIO.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CC0D89B4-AB4A-414C-9955-5797500B387E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/MegaBits/SIOSocket.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CC0D89B4-AB4A-414C-9955-5797500B387E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC0D89B4-AB4A-414C-9955-5797500B387E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SIOSocket</string>
+		</dict>
+	</array>
+</dict>
+</plist>

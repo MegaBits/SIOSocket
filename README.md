@@ -21,6 +21,8 @@ then...
 }];
 ```
 
+A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin)
+
 ## Generators
 
 #### + (void)socketWithHost:response:
