@@ -7,4 +7,6 @@ Pod::Spec.new do |s|
     s.platform      = :ios, "7.0"
     s.source_files  = "SocketIO/Source/*.{h,m}"
     s.requires_arc  = true
+    s.homepage      = "https://github.com/MegaBits/SIOSocket"
+    s.authors       = { "Patrick Perini" => "pcperini@gmail.com" }
 end
