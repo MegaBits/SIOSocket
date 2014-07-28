@@ -151,4 +151,11 @@
     [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
 }
 
+- (void)close
+{
+    [self.javascriptWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    [self.javascriptWebView reload];
+    self.javascriptWebView = nil;
+}
+
 @end
