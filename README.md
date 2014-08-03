@@ -3,10 +3,10 @@
 
 ## How to use
 
-SIOSocket can be added as a CocodaPod, submodule, or standalone dependency to any iOS 7.0 (or greater) project. To access the Cocoapod, point to the podspec file directly.
+SIOSocket can be added as a CocodaPod, submodule, or standalone dependency to any iOS 7.0 (or greater) project.
 
 ```ruby
-pod 'SIOSocket', :podspec => 'https://raw.githubusercontent.com/MegaBits/SIOSocket/master/SIOSocket.podspec'
+pod 'SIOSocket', '~> 0.0.2'
 ```
 
 then...
