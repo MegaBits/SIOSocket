@@ -23,7 +23,7 @@
 @property (nonatomic, copy) void (^onReconnectionAttempt)(NSInteger numberOfAttempts);
 @property (nonatomic, copy) void (^onReconnectionError)(NSDictionary *errorInfo);
 
-- (void)on:(NSString *)event do:(void (^)(id data))function;
+- (void)on:(NSString *)event callback:(void (^)(id data))function;
 
 // Emitters
 - (void)emit:(NSString *)event, ... NS_REQUIRES_NIL_TERMINATION;
