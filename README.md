@@ -72,7 +72,7 @@ Called upon a reconnection attempt error.
 
 ## Responders
 
-#### -(void)on:do:
+#### -(void)on:callback:
 
 Binds the given `void (^)(id)` block, `function`, to the given `event`.
 

@@ -37,7 +37,7 @@
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
         [connectionExpectation fulfill];
 
-        [socket on: @"false" do: ^(id data)
+        [socket on: @"false" callback: ^(id data)
         {
             XCTAssertFalse([data boolValue], @"response not false");
             [falseExpectation fulfill];
@@ -68,7 +68,7 @@
         [connectionExpectation fulfill];
 
         __block NSInteger numberOfCorrectStrings = 0;
-        [socket on: @"takeUtf8" do: ^(id data)
+        [socket on: @"takeUtf8" callback: ^(id data)
         {
             XCTAssertEqualObjects(data, correctStrings[numberOfCorrectStrings], @"%@ is not equal to %@", data, correctStrings);
             numberOfCorrectStrings++;
@@ -95,7 +95,7 @@
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
         [connectionExpectation fulfill];
 
-        [socket on: @"takeDate" do: ^(id data)
+        [socket on: @"takeDate" callback: ^(id data)
         {
             XCTAssert([data isKindOfClass: [NSString class]], @"%@ is not a string", data);
             [stringExpectation fulfill];
@@ -117,7 +117,7 @@
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
         [connectionExpectation fulfill];
 
-        [socket on: @"takeDateObj" do: ^(id data)
+        [socket on: @"takeDateObj" callback: ^(id data)
         {
             XCTAssert([data isKindOfClass: [NSDictionary class]], @"%@ is not a dictionary", data);
             XCTAssert([[data objectForKey: @"date"] isKindOfClass: [NSString class]], @"%@['date'] is not a string", data);
