@@ -127,7 +127,7 @@
 }
 
 // Event listeners
-- (void)on:(NSString *)event do:(void (^)(id))function
+- (void)on:(NSString *)event callback:(void (^)(id))function
 {
     self.javascriptContext[[NSString stringWithFormat: @"objc_%@", event]] = function;
     [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.on('%@', objc_%@);", event, event]];
@@ -149,6 +149,13 @@
     va_end(args);
 
     [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
+}
+
+- (void)close
+{
+    [self.javascriptWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    [self.javascriptWebView reload];
+    self.javascriptWebView = nil;
 }
 
 @end

@@ -1,6 +1,8 @@
 
 # SIOSocket
 
+SIOSocket is simple interface for communicating with [socket.io 1.0](http://socket.io) from iOS.
+
 ## How to use
 
 SIOSocket can be added as a CocodaPod, submodule, or standalone dependency to any iOS 7.0 (or greater) project.
@@ -70,7 +72,7 @@ Called upon a reconnection attempt error.
 
 ## Responders
 
-#### -(void)on:do:
+#### -(void)on:callback:
 
 Binds the given `void (^)(id)` block, `function`, to the given `event`.
 
