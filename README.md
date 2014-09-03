@@ -27,13 +27,13 @@ A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits
 
 ## Generators
 
-#### + (void)socketWithHost:response:
+#### `+ (void)socketWithHost:response:`
 
 Generates a new `SIOSocket` object, begins its connection to the given host, and returns it as the sole parameter of the response block.
 
 The host reachable at the given URL string should be running a valid instance of a socket.io server.
 
-#### + (void)socketWithHost:reconnectAutomatically:attemptLimit:withDelay:maximumDelay:timeout:response:
+#### `+ (void)socketWithHost:reconnectAutomatically:attemptLimit:withDelay:maximumDelay:timeout:response:`
 
 - `reconnectAutomatically` whether to reconnect automatically (`YES`)
 - `attemptLimit` number of times to attempt a reconnect (Infinite)
@@ -46,33 +46,33 @@ the amount specified by `reconnectionDelay`.
 
 ## Properties
 
-#### void (^onConnect)()
+#### `void (^onConnect)()`
 
 Called upon connecting.
 
-#### void (^onDisconnect)()
+#### `void (^onDisconnect)()`
 
 Called upon a disconnection.
 
-#### void (^onError)(NSDictionary *errorInfo)
+#### `void (^onError)(NSDictionary *errorInfo)`
 
 Called upon a connection error.
 
-#### void (^onReconnect)(NSInteger numberOfAttempts)
+#### `void (^onReconnect)(NSInteger numberOfAttempts)`
 
 Called upon a successful reconnection.
 
-#### void (^onReconnectionAttempt)(NSInteger numberOfAttempts)
+#### `void (^onReconnectionAttempt)(NSInteger numberOfAttempts)`
 
 Called upon an attempt to reconnect.
 
-#### void (^onReconnectionError)(NSDictionary *errorInfo)
+#### `void (^onReconnectionError)(NSDictionary *errorInfo)`
 
 Called upon a reconnection attempt error.
 
 ## Responders
 
-#### -(void)on:callback:
+#### `-(void)on:callback:`
 
 Binds the given `void (^)(id)` block, `function`, to the given `event`.
 
@@ -80,7 +80,7 @@ Binds the given `void (^)(id)` block, `function`, to the given `event`.
 
 ## Emitters
 
-#### -(void)emit:...
+#### `-(void)emit:...`
 
 Fires the given `event` with then given variadic arguments as arguments.
 
