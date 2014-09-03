@@ -10,29 +10,29 @@
 	<string>SocketIO</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CC0D89B4-AB4A-414C-9955-5797500B387E</key>
+		<key>0E77FB9618B0A7E05C2EE27348151B7941044E77</key>
 		<string>https://github.com/MegaBits/SIOSocket.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SocketIO.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CC0D89B4-AB4A-414C-9955-5797500B387E</key>
+		<key>0E77FB9618B0A7E05C2EE27348151B7941044E77</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/MegaBits/SIOSocket.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CC0D89B4-AB4A-414C-9955-5797500B387E</string>
+	<string>0E77FB9618B0A7E05C2EE27348151B7941044E77</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CC0D89B4-AB4A-414C-9955-5797500B387E</string>
+			<string>0E77FB9618B0A7E05C2EE27348151B7941044E77</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SIOSocket</string>
 		</dict>
