@@ -8,7 +8,7 @@ SIOSocket is simple interface for communicating with [socket.io 1.0](http://sock
 SIOSocket can be added as a CocodaPod, submodule, or standalone dependency to any iOS 7.0 (or greater) project.
 
 ```ruby
-pod 'SIOSocket', '~> 0.0.2'
+pod 'SIOSocket', '~> 0.0.3'
 ```
 
 then...
