@@ -28,4 +28,6 @@
 // Emitters
 - (void)emit:(NSString *)event, ... NS_REQUIRES_NIL_TERMINATION;
 
+- (void)close;
+
 @end
