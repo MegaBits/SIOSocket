@@ -29,14 +29,10 @@
 
 - (void)testFalse
 {
-    XCTestExpectation *connectionExpectation = [self expectationWithDescription: @"should connect to localhost"];
     XCTestExpectation *falseExpectation = [self expectationWithDescription: @"should work with false"];
-
     [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
     {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
-        [connectionExpectation fulfill];
-
         [socket on: @"false" callback: ^(id data)
         {
             XCTAssertFalse([data boolValue], @"response not false");
@@ -51,9 +47,7 @@
 
 - (void)testUTF8MultibyteCharacters
 {
-    XCTestExpectation *connectionExpectation = [self expectationWithDescription: @"should connect to localhost"];
     XCTestExpectation *utf8MultibyteCharactersExpectation = [self expectationWithDescription: @"should work with utf8 multibyte characters"];
-
     NSArray *correctStrings = @[
         @"てすと",
         @"Я Б Г Д Ж Й",
@@ -65,7 +59,6 @@
     [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
     {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
-        [connectionExpectation fulfill];
 
         __block NSInteger numberOfCorrectStrings = 0;
         [socket on: @"takeUtf8" callback: ^(id data)
@@ -87,14 +80,10 @@
 
 - (void)testEmitDateAsString
 {
-    XCTestExpectation *connectionExpectation = [self expectationWithDescription: @"should connect to localhost"];
     XCTestExpectation *stringExpectation = [self expectationWithDescription: @"should emit date as a string"];
-
     [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
     {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
-        [connectionExpectation fulfill];
-
         [socket on: @"takeDate" callback: ^(id data)
         {
             XCTAssert([data isKindOfClass: [NSString class]], @"%@ is not a string", data);
@@ -109,14 +98,10 @@
 
 - (void)testEmitDateAsObject
 {
-    XCTestExpectation *connectionExpectation = [self expectationWithDescription: @"should connect to localhost"];
     XCTestExpectation *stringExpectation = [self expectationWithDescription: @"should emit date as a string"];
-
     [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
     {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
-        [connectionExpectation fulfill];
-
         [socket on: @"takeDateObj" callback: ^(id data)
         {
             XCTAssert([data isKindOfClass: [NSDictionary class]], @"%@ is not a dictionary", data);
