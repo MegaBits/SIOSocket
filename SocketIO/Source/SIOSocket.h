@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NSArray SIOParameterArray; // NSArray of these JSValue-valid objects:
+//   Objective-C type  |   JavaScript type
+// --------------------+---------------------
+//        NSNull       |        null
+//       NSString      |       string
+//       NSNumber      |   number, boolean
+//     NSDictionary    |   Object object
+//       NSArray       |    Array object
+//        NSDate       |     Date object
+
 @interface SIOSocket : NSObject
 
 // Generators
@@ -23,10 +33,11 @@
 @property (nonatomic, copy) void (^onReconnectionAttempt)(NSInteger numberOfAttempts);
 @property (nonatomic, copy) void (^onReconnectionError)(NSDictionary *errorInfo);
 
-- (void)on:(NSString *)event callback:(void (^)(id data))function;
+- (void)on:(NSString *)event callback:(void (^)(SIOParameterArray *args))function;
 
 // Emitters
-- (void)emit:(NSString *)event, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)emit:(NSString *)event;
+- (void)emit:(NSString *)event args:(SIOParameterArray *)args;
 
 - (void)close;
 
