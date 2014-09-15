@@ -8,15 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NSArray SIOParameterArray; // NSArray of these JSValue-valid objects:
-//   Objective-C type  |   JavaScript type
-// --------------------+---------------------
-//        NSNull       |        null
-//       NSString      |       string
-//       NSNumber      |   number, boolean
-//     NSDictionary    |   Object object
-//       NSArray       |    Array object
-//        NSDate       |     Date object
+// NSArray of these JSValue-valid objects:
+typedef NSArray SIOParameterArray;
+// --------------------
+//        NSNull       
+//       NSString      
+//       NSNumber      
+//     NSDictionary    
+//       NSArray       
+//        NSDate
+// --------------------
 
 @interface SIOSocket : NSObject
 
