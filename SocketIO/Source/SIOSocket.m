@@ -53,6 +53,9 @@
 
     socket.javascriptContext[@"window"][@"onload"] = ^()
     {
+        if(socket_io_js == nil){
+            socket_io_js = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"socket.io" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil];
+        }
         [socket.javascriptContext evaluateScript: socket_io_js];
         NSString *socketConstructor = socket_io_js_constructor(hostURL,
             reconnectAutomatically,
