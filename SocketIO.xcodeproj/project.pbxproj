@@ -15,6 +15,8 @@
 		73DCADEE194B7ED700696409 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DCADED194B7ED700696409 /* SocketIO.m */; };
 		73DF8C35194F66AA00CAF960 /* SIOSocket.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 73DF8C34194F66AA00CAF960 /* SIOSocket.podspec */; };
 		73DF8C42194F738300CAF960 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8C40194F738300CAF960 /* SIOSocket.m */; };
+		C5D14BD619ECF9E800C2FA45 /* socket.io.js in Resources */ = {isa = PBXBuildFile; fileRef = C5D14BD419ECF9E800C2FA45 /* socket.io.js */; };
+		C5D14BD719ECF9E800C2FA45 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D14BD519ECF9E800C2FA45 /* TemplateIcon2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		73DF8C3F194F738300CAF960 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIOSocket.h; sourceTree = "<group>"; };
 		73DF8C40194F738300CAF960 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIOSocket.m; sourceTree = "<group>"; };
 		73DF8C41194F738300CAF960 /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.io.js.h; sourceTree = "<group>"; };
+		C5D14BD419ECF9E800C2FA45 /* socket.io.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = socket.io.js; sourceTree = "<group>"; };
+		C5D14BD519ECF9E800C2FA45 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			children = (
 				733750D019B7A42800DEE6FC /* Info.plist */,
 				733750D119B7A42800DEE6FC /* main.m */,
+				C5D14BD419ECF9E800C2FA45 /* socket.io.js */,
+				C5D14BD519ECF9E800C2FA45 /* TemplateIcon2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -224,7 +230,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D14BD719ECF9E800C2FA45 /* TemplateIcon2x.png in Resources */,
 				733750DB19B7A42800DEE6FC /* Main.storyboard in Resources */,
+				C5D14BD619ECF9E800C2FA45 /* socket.io.js in Resources */,
 				733750DD19B7A42800DEE6FC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
