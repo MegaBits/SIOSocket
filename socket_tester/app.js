@@ -112,4 +112,9 @@ server.on('connection', function(socket){
     buf = new Buffer('asdfasdf', 'utf8');
     socket.emit('takebin', buf);
   });
+  
+  // emit multi words
+  socket.on('multi word', function() {
+    socket.emit('multi word', 'word');
+  });
 });

@@ -24,8 +24,7 @@
 @implementation SIOSocket
 
 // Generators
-+ (void)socketWithHost:(NSString *)hostURL response:(void (^)(SIOSocket *))response
-{
++ (void)socketWithHost:(NSString *)hostURL response:(void (^)(SIOSocket *))response {
     // Defaults documented with socket.io-client: https://github.com/Automattic/socket.io-client
     return [self socketWithHost: hostURL
          reconnectAutomatically: YES
@@ -36,24 +35,23 @@
                        response: response];
 }
 
-+ (void)socketWithHost:(NSString *)hostURL reconnectAutomatically:(BOOL)reconnectAutomatically attemptLimit:(NSInteger)attempts withDelay:(NSTimeInterval)reconnectionDelay maximumDelay:(NSTimeInterval)maximumDelay timeout:(NSTimeInterval)timeout response:(void (^)(SIOSocket *))response
-{
++ (void)socketWithHost:(NSString *)hostURL reconnectAutomatically:(BOOL)reconnectAutomatically attemptLimit:(NSInteger)attempts withDelay:(NSTimeInterval)reconnectionDelay maximumDelay:(NSTimeInterval)maximumDelay timeout:(NSTimeInterval)timeout response:(void (^)(SIOSocket *))response {
     SIOSocket *socket = [[SIOSocket alloc] init];
-    if (!socket)
-    {
+    if (!socket) {
         response(nil);
         return;
     }
 
     socket.javascriptWebView = [[UIWebView alloc] init];
-    [socket.javascriptContext setExceptionHandler: ^(JSContext *context, JSValue *errorValue)
-    {
+    [socket.javascriptContext setExceptionHandler: ^(JSContext *context, JSValue *errorValue) {
         NSLog(@"JSError: %@", errorValue);
+        NSLog(@"%@", [NSThread callStackSymbols]);
     }];
 
-    socket.javascriptContext[@"window"][@"onload"] = ^()
-    {
+    socket.javascriptContext[@"window"][@"onload"] = ^() {
         [socket.javascriptContext evaluateScript: socket_io_js];
+        [socket.javascriptContext evaluateScript: blob_factory_js];
+        
         NSString *socketConstructor = socket_io_js_constructor(hostURL,
             reconnectAutomatically,
             attempts,
@@ -63,46 +61,38 @@
         );
 
         socket.javascriptContext[@"objc_socket"] = [socket.javascriptContext evaluateScript: socketConstructor];
-        if (![socket.javascriptContext[@"objc_socket"] toObject])
-        {
+        if (![socket.javascriptContext[@"objc_socket"] toObject]) {
             response(nil);
         }
 
         // Responders
         __weak typeof(socket) weakSocket = socket;
-        
-        socket.javascriptContext[@"objc_onConnect"] = ^()
-        {
+        socket.javascriptContext[@"objc_onConnect"] = ^() {
             if (weakSocket.onConnect)
                 weakSocket.onConnect();
         };
 
-        socket.javascriptContext[@"objc_onDisconnect"] = ^()
-        {
+        socket.javascriptContext[@"objc_onDisconnect"] = ^() {
             if (weakSocket.onDisconnect)
                 weakSocket.onDisconnect();
         };
 
-        socket.javascriptContext[@"objc_onError"] = ^(NSDictionary *errorDictionary)
-        {
+        socket.javascriptContext[@"objc_onError"] = ^(NSDictionary *errorDictionary) {
             if (weakSocket.onError)
                 weakSocket.onError(errorDictionary);
         };
 
-        socket.javascriptContext[@"objc_onReconnect"] = ^(NSInteger numberOfAttempts)
-        {
+        socket.javascriptContext[@"objc_onReconnect"] = ^(NSInteger numberOfAttempts) {
             if (weakSocket.onReconnect)
                 weakSocket.onReconnect(numberOfAttempts);
         };
 
-        socket.javascriptContext[@"objc_onReconnectionAttempt"] = ^(NSInteger numberOfAttempts)
-        {
+        socket.javascriptContext[@"objc_onReconnectionAttempt"] = ^(NSInteger numberOfAttempts) {
             if (weakSocket.onReconnectionAttempt)
                 weakSocket.onReconnectionAttempt(numberOfAttempts);
         };
 
-        socket.javascriptContext[@"objc_onReconnectionError"] = ^(NSDictionary *errorDictionary)
-        {
+        socket.javascriptContext[@"objc_onReconnectionError"] = ^(NSDictionary *errorDictionary) {
             if (weakSocket.onReconnectionError)
                 weakSocket.onReconnectionError(errorDictionary);
         };
@@ -120,40 +110,63 @@
     [socket.javascriptWebView loadHTMLString: @"<html/>" baseURL: nil];
 }
 
+- (void)dealloc {
+    [self close];
+}
+
 // Accessors
-- (JSContext *)javascriptContext
-{
+- (JSContext *)javascriptContext {
     return [self.javascriptWebView valueForKeyPath: @"documentView.webView.mainFrame.javaScriptContext"];
 }
 
 // Event listeners
-- (void)on:(NSString *)event callback:(void (^)(id))function
-{
-    self.javascriptContext[[NSString stringWithFormat: @"objc_%@", event]] = function;
-    [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.on('%@', objc_%@);", event, event]];
+- (void)on:(NSString *)event callback:(void (^)(SIOParameterArray *args))function {
+    NSString *eventID = [event stringByReplacingOccurrencesOfString: @" " withString: @"_"];
+    self.javascriptContext[[NSString stringWithFormat: @"objc_%@", eventID]] = ^() {
+        NSMutableArray *arguments = [NSMutableArray array];
+        for (JSValue *object in [JSContext currentArguments]) {
+            if ([object toObject]) {
+                [arguments addObject: [object toObject]];
+            }
+        }
+        
+        function(arguments);
+    };
+    
+    [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.on('%@', objc_%@);", event, eventID]];
 }
 
 // Emitters
-- (void)emit:(NSString *)event, ...
-{
-    NSMutableArray *arguments = [NSMutableArray array];
+- (void)emit:(NSString *)event {
+    [self emit: event args: nil];
+}
 
-    va_list args;
-    va_start(args, event);
-
-    for (id argument = event; argument != nil; argument = va_arg(args, id))
-    {
-        [arguments addObject: [NSString stringWithFormat: @"'%@'", argument]];
+- (void)emit:(NSString *)event args:(SIOParameterArray *)args {
+    NSMutableArray *arguments = [NSMutableArray arrayWithObject: [NSString stringWithFormat: @"'%@'", event]];
+    for (id arg in args) {
+        if ([arg isKindOfClass: [NSNull class]]) {
+            [arguments addObject: @"null"];
+        }
+        else if ([arg isKindOfClass: [NSString class]]) {
+            [arguments addObject: [NSString stringWithFormat: @"'%@'", arg]];
+        }
+        else if ([arg isKindOfClass: [NSNumber class]]) {
+            [arguments addObject: [NSString stringWithFormat: @"%@", arg]];
+        }
+        else if ([arg isKindOfClass: [NSData class]]) {
+            NSString *dataString = [[NSString alloc] initWithData: arg encoding: NSUTF8StringEncoding];
+            [arguments addObject: [NSString stringWithFormat: @"blob('%@')", dataString]];
+        }
+        else if ([arg isKindOfClass: [NSArray class]] || [arg isKindOfClass: [NSDictionary class]] || [arg isKindOfClass: [NSDate class]]) {
+            [arguments addObject: [[JSValue valueWithObject: arg inContext: self.javascriptContext] description]];
+        }
     }
-
-    va_end(args);
-
+    
     [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
 }
 
-- (void)close
-{
-    [self.javascriptWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+- (void)close {
+    [self.javascriptWebView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: @"about:blank"]]];
     [self.javascriptWebView reload];
     self.javascriptWebView = nil;
 }

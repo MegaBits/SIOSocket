@@ -17,8 +17,7 @@ static NSString *const socket_io_js = @"!function(e){if(\"object\"==typeof expor
 /*!
  *  socket.io client constructor format.
  */
-static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, NSInteger attemptLimit, NSTimeInterval reconnectionDelay, NSTimeInterval reconnectionDelayMax, NSTimeInterval timeout)
-{
+static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, NSInteger attemptLimit, NSTimeInterval reconnectionDelay, NSTimeInterval reconnectionDelayMax, NSTimeInterval timeout) {
     NSString *constructorFormat = @"io('%@', {  \
         'reconnection': %@,                     \
         'reconnectionAttempts': %@,             \
@@ -36,3 +35,11 @@ static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, 
         (int)(timeout * MSEC_PER_SEC)
     ];
 }
+
+/*!
+ *  Javascript funtion to return a Blob from a UTF8-encoded string.
+ */
+static NSString *const blob_factory_js = @"function blob(dataString) {  \
+    var blob = new Blob([dataString], {type: 'text/plain'});            \
+    return blob;                                                        \
+}";
