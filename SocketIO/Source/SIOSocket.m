@@ -162,7 +162,9 @@
         }
     }
     
-    [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
+    });
 }
 
 - (void)close {
