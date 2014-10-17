@@ -67,7 +67,6 @@
 
         // Responders
         __weak typeof(socket) weakSocket = socket;
-        
         socket.javascriptContext[@"objc_onConnect"] = ^() {
             if (weakSocket.onConnect)
                 weakSocket.onConnect();

@@ -37,10 +37,9 @@ static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, 
 }
 
 /*!
- *  DOCME
+ *  Javascript funtion to return a Blob from a UTF8-encoded string.
  */
-static NSString *const blob_factory_js =                         \
-    @"function blob(dataString) {                                \
-        var blob = new Blob([dataString], {type: 'text/plain'}); \
-        return blob;                                             \
-    }";
+static NSString *const blob_factory_js = @"function blob(dataString) {  \
+    var blob = new Blob([dataString], {type: 'text/plain'});            \
+    return blob;                                                        \
+}";
