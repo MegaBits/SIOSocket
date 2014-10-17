@@ -35,8 +35,7 @@
                        response: response];
 }
 
-+ (void)socketWithHost:(NSString *)hostURL reconnectAutomatically:(BOOL)reconnectAutomatically attemptLimit:(NSInteger)attempts withDelay:(NSTimeInterval)reconnectionDelay maximumDelay:(NSTimeInterval)maximumDelay timeout:(NSTimeInterval)timeout response:(void (^)(SIOSocket *))response
-{
++ (void)socketWithHost:(NSString *)hostURL reconnectAutomatically:(BOOL)reconnectAutomatically attemptLimit:(NSInteger)attempts withDelay:(NSTimeInterval)reconnectionDelay maximumDelay:(NSTimeInterval)maximumDelay timeout:(NSTimeInterval)timeout response:(void (^)(SIOSocket *))response {
     SIOSocket *socket = [[SIOSocket alloc] init];
     if (!socket) {
         response(nil);
@@ -51,6 +50,8 @@
 
     socket.javascriptContext[@"window"][@"onload"] = ^() {
         [socket.javascriptContext evaluateScript: socket_io_js];
+        [socket.javascriptContext evaluateScript: blob_factory_js];
+        
         NSString *socketConstructor = socket_io_js_constructor(hostURL,
             reconnectAutomatically,
             attempts,
@@ -110,6 +111,10 @@
     [socket.javascriptWebView loadHTMLString: @"<html/>" baseURL: nil];
 }
 
+- (void)dealloc {
+    [self close];
+}
+
 // Accessors
 - (JSContext *)javascriptContext {
     return [self.javascriptWebView valueForKeyPath: @"documentView.webView.mainFrame.javaScriptContext"];
@@ -148,6 +153,10 @@
         }
         else if ([arg isKindOfClass: [NSNumber class]]) {
             [arguments addObject: [NSString stringWithFormat: @"%@", arg]];
+        }
+        else if ([arg isKindOfClass: [NSData class]]) {
+            NSString *dataString = [[NSString alloc] initWithData: arg encoding: NSUTF8StringEncoding];
+            [arguments addObject: [NSString stringWithFormat: @"blob('%@')", dataString]];
         }
         else if ([arg isKindOfClass: [NSArray class]] || [arg isKindOfClass: [NSDictionary class]] || [arg isKindOfClass: [NSDate class]]) {
             [arguments addObject: [[JSValue valueWithObject: arg inContext: self.javascriptContext] description]];

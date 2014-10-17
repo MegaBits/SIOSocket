@@ -15,11 +15,9 @@
 
 @implementation SocketIO
 
-- (void)testConnectToLocalhost
-{
+- (void)testConnectToLocalhost {
     XCTestExpectation *connectionExpectation = [self expectationWithDescription: @"should connect to localhost"];
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-    {
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
         [connectionExpectation fulfill];
     }];
@@ -27,11 +25,9 @@
     [self waitForExpectationsWithTimeout: 10 handler: nil];
 }
 
-- (void)testFalse
-{
+- (void)testFalse {
     XCTestExpectation *falseExpectation = [self expectationWithDescription: @"should work with false"];
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-    {
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
         [socket on: @"false" callback: ^(SIOParameterArray *args)
         {
@@ -56,19 +52,16 @@
         @"utf8 — string"
     ];
 
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-    {
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
 
         __block NSInteger numberOfCorrectStrings = 0;
-        [socket on: @"takeUtf8" callback: ^(SIOParameterArray *args)
-        {
+        [socket on: @"takeUtf8" callback: ^(SIOParameterArray *args) {
             NSString *string = [args firstObject];
             XCTAssertEqualObjects(string, correctStrings[numberOfCorrectStrings], @"%@ is not equal to %@", string, correctStrings);
             numberOfCorrectStrings++;
 
-            if (numberOfCorrectStrings == [correctStrings count])
-            {
+            if (numberOfCorrectStrings == [correctStrings count]) {
                 [utf8MultibyteCharactersExpectation fulfill];
             }
         }];
@@ -79,14 +72,11 @@
     [self waitForExpectationsWithTimeout: 10 handler: nil];
 }
 
-- (void)testEmitDateAsString
-{
+- (void)testEmitDateAsString {
     XCTestExpectation *stringExpectation = [self expectationWithDescription: @"should emit date as a string"];
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-    {
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
-        [socket on: @"takeDate" callback: ^(SIOParameterArray *args)
-        {
+        [socket on: @"takeDate" callback: ^(SIOParameterArray *args) {
             NSString *string = [args firstObject];
             XCTAssert([string isKindOfClass: [NSString class]], @"%@ is not a string", string);
             [stringExpectation fulfill];
@@ -98,14 +88,11 @@
     [self waitForExpectationsWithTimeout: 10 handler: nil];
 }
 
-- (void)testEmitDateAsObject
-{
+- (void)testEmitDateAsObject {
     XCTestExpectation *stringExpectation = [self expectationWithDescription: @"should emit date as a string"];
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-    {
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
         XCTAssertNotNil(socket, @"socket could not connect to localhost");
-        [socket on: @"takeDateObj" callback: ^(SIOParameterArray *args)
-        {
+        [socket on: @"takeDateObj" callback: ^(SIOParameterArray *args) {
             NSDictionary *dictionary = [args firstObject];
             XCTAssert([dictionary isKindOfClass: [NSDictionary class]], @"%@ is not a dictionary", dictionary);
             XCTAssert([[dictionary objectForKey: @"date"] isKindOfClass: [NSString class]], @"%@['date'] is not a string", dictionary);
@@ -119,14 +106,11 @@
     [self waitForExpectationsWithTimeout: 10 handler: nil];
 }
 
-- (void)testEmitMultiWord
-{
+- (void)testEmitMultiWord {
     XCTestExpectation *stringExpectation = [self expectationWithDescription: @"should emit multi word"];
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-     {
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
          XCTAssertNotNil(socket, @"socket could not connect to localhost");
-         [socket on: @"multi word" callback: ^(SIOParameterArray *args)
-         {
+         [socket on: @"multi word" callback: ^(SIOParameterArray *args) {
              NSString *response = [args firstObject];
              XCTAssert([response isEqualToString: @"word"], @"%@ != 'word'", response);
              
@@ -135,6 +119,20 @@
          
          [socket emit: @"multi word"];
      }];
+    
+    [self waitForExpectationsWithTimeout: 10 handler: nil];
+}
+
+- (void)testBinaryData {
+    XCTestExpectation *blobExpectation = [self expectationWithDescription: @"should send binary data as Blob"];
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
+        XCTAssertNotNil(socket, @"socket could not conenct to localhost");
+        [socket on: @"back" callback: ^(SIOParameterArray *args) {
+            [blobExpectation fulfill];
+        }];
+        
+        [socket emit: @"blob" args: @[[@"hello world" dataUsingEncoding: NSUTF8StringEncoding]]];
+    }];
     
     [self waitForExpectationsWithTimeout: 10 handler: nil];
 }

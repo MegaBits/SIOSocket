@@ -8,7 +8,7 @@ SIOSocket is simple interface for communicating with [socket.io 1.0](http://sock
 SIOSocket can be added as a CocodaPod, submodule, or standalone dependency to any iOS 7.0 (or greater) project.
 
 ```ruby
-pod 'SIOSocket', '~> 0.1.0'
+pod 'SIOSocket', '~> 0.2.0'
 ```
 
 then...
@@ -17,13 +17,26 @@ then...
 #import <SIOSocket/SIOSocket.h>
 
 // ...
-[SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
-{
+[SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
     self.socket = socket;
 }];
 ```
 
-A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin)
+A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin) (currently still requires SIOSocket v0.2.0)
+
+## Types
+
+#### `typedef NSArray SIOParameterArray`
+
+An NSArray of these JSValue-valid objects:
+
+- NSNull       
+- NSString      
+- NSNumber      
+- NSDictionary    
+- NSArray       
+- NSDate
+- NSData
 
 ## Generators
 
@@ -74,15 +87,15 @@ Called upon a reconnection attempt error.
 
 #### `-(void)on:callback:`
 
-Binds the given `void (^)(id)` block, `function`, to the given `event`.
+Binds the given `void (^)(SIOParameterArray *)` block, `function`, to the given `event`.
 
 `function` is called upon a firing of `event`.
 
 ## Emitters
 
-#### `-(void)emit:...`
+#### `-(void)emit:args:`
 
-Fires the given `event` with then given variadic arguments as arguments.
+Fires the given `event` with then given SIOParameterArray as arguments.
 
 ## License
 

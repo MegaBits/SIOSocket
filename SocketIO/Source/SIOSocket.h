@@ -17,6 +17,7 @@ typedef NSArray SIOParameterArray;
 //     NSDictionary    
 //       NSArray       
 //        NSDate
+//        NSData
 // --------------------
 
 @interface SIOSocket : NSObject
