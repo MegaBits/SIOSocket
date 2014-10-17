@@ -16,7 +16,6 @@ typedef NSArray SIOParameterArray;
 //       NSNumber      
 //     NSDictionary    
 //       NSArray       
-//        NSDate
 //        NSData
 // --------------------
 

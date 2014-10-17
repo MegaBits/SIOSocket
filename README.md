@@ -35,7 +35,6 @@ An NSArray of these JSValue-valid objects:
 - NSNumber      
 - NSDictionary    
 - NSArray       
-- NSDate
 - NSData
 
 ## Generators

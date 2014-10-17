@@ -157,8 +157,8 @@
             NSString *dataString = [[NSString alloc] initWithData: arg encoding: NSUTF8StringEncoding];
             [arguments addObject: [NSString stringWithFormat: @"blob('%@')", dataString]];
         }
-        else if ([arg isKindOfClass: [NSArray class]] || [arg isKindOfClass: [NSDictionary class]] || [arg isKindOfClass: [NSDate class]]) {
-            [arguments addObject: [[JSValue valueWithObject: arg inContext: self.javascriptContext] description]];
+        else if ([arg isKindOfClass: [NSArray class]] || [arg isKindOfClass: [NSDictionary class]]) {
+            [arguments addObject: [[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject: arg options: 0 error: nil] encoding: NSUTF8StringEncoding]];
         }
     }
     
