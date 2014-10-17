@@ -22,7 +22,7 @@ then...
 }];
 ```
 
-A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin) (currently still requires SIOSocket v0.2.0)
+A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin) (currently still requires SIOSocket v0.0.2)
 
 ## Types
 
