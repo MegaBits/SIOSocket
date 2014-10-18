@@ -22,6 +22,15 @@ then...
 }];
 ```
 
+or...
+
+```swift
+// ...
+SIOSocket.socketWithHost("http://localhost:3000") { (socket: SIOSocket) in
+    self.socket = socket
+}
+```
+
 A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin)
 
 ## Types
