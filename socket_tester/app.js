@@ -117,4 +117,8 @@ server.on('connection', function(socket){
   socket.on('multi word', function() {
     socket.emit('multi word', 'word');
   });
+  
+  socket.on('multi-word', function() {
+    socket.emit('multi-word', 'word');
+  });
 });

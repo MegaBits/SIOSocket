@@ -123,6 +123,23 @@
     [self waitForExpectationsWithTimeout: 10 handler: nil];
 }
 
+- (void)testEmitMultiWordWithCharacters {
+    XCTestExpectation *stringExpectation = [self expectationWithDescription: @"should emit multi word"];
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
+        XCTAssertNotNil(socket, @"socket could not connect to localhost");
+        [socket on: @"multi-word" callback: ^(SIOParameterArray *args) {
+            NSString *response = [args firstObject];
+            XCTAssert([response isEqualToString: @"word"], @"%@ != 'word'", response);
+            
+            [stringExpectation fulfill];
+        }];
+        
+        [socket emit: @"multi-word"];
+    }];
+    
+    [self waitForExpectationsWithTimeout: 10 handler: nil];
+}
+
 - (void)testBinaryData {
     XCTestExpectation *blobExpectation = [self expectationWithDescription: @"should send binary data as Blob"];
     [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
