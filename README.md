@@ -22,7 +22,16 @@ then...
 }];
 ```
 
-A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin) (currently still requires SIOSocket v0.2.0)
+or, in Swift...
+
+```swift
+// ...
+SIOSocket.socketWithHost("http://localhost:3000") { (socket: SIOSocket) in
+    self.socket = socket
+}
+```
+
+A full demo can be found over at [MegaBits/WorldPin](https://github.com/MegaBits/WorldPin)
 
 ## Types
 

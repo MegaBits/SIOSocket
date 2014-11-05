@@ -14,7 +14,7 @@
 		<string>https://github.com/MegaBits/SIOSocket.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SocketIO.xcodeproj/project.xcworkspace</string>
+	<string>SocketIO.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0E77FB9618B0A7E05C2EE27348151B7941044E77</key>
