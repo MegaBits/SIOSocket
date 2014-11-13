@@ -85,6 +85,11 @@ static NSString *SIOMD5(NSString *string) {
             if (weakSocket.onConnect)
                 weakSocket.onConnect();
         };
+        
+        socket.javascriptContext[@"objc_onConnectError"] = ^(NSDictionary *errorDictionary) {
+            if (weakSocket.onConnectError)
+                weakSocket.onConnectError(errorDictionary);
+        };
 
         socket.javascriptContext[@"objc_onDisconnect"] = ^() {
             if (weakSocket.onDisconnect)
@@ -112,6 +117,7 @@ static NSString *SIOMD5(NSString *string) {
         };
 
         [socket.javascriptContext evaluateScript: @"objc_socket.on('connect', objc_onConnect);"];
+        [socket.javascriptContext evaluateScript: @"objc_socket.on('connect_error', objc_onConnectError);"];
         [socket.javascriptContext evaluateScript: @"objc_socket.on('error', objc_onError);"];
         [socket.javascriptContext evaluateScript: @"objc_socket.on('disconnect', objc_onDisconnect);"];
         [socket.javascriptContext evaluateScript: @"objc_socket.on('reconnect', objc_onReconnect);"];
