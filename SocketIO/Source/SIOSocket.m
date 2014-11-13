@@ -176,9 +176,9 @@ static NSString *SIOMD5(NSString *string) {
         }
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_async(dispatch_get_main_queue(), ^{
         [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
-    });
+//    });
 }
 
 - (void)close {
