@@ -181,6 +181,20 @@ static NSString *SIOMD5(NSString *string) {
     });
 }
 
+- (void)emit:(NSString *)event dictionaryArgs:(NSDictionary *)args {
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:args options:0 error:nil];
+    NSString *params = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    if (args.count == 0) {
+        [self emit:event];
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit('%@', %@);", event, params]];
+    });
+}
+
 - (void)close {
     [self.javascriptWebView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: @"about:blank"]]];
     [self.javascriptWebView reload];
