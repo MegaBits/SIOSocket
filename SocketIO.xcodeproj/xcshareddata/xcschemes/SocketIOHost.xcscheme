@@ -34,6 +34,20 @@
                ReferencedContainer = "container:SocketIO.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "027E31911A52BD9900802098"
+               BuildableName = "SocketIOFrameworkTests.xctest"
+               BlueprintName = "SocketIOFrameworkTests"
+               ReferencedContainer = "container:SocketIO.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "73DCADE7194B7ED700696409"
                BuildableName = "SocketIO.xctest"
                BlueprintName = "SocketIO"
+               ReferencedContainer = "container:SocketIO.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "027E31911A52BD9900802098"
+               BuildableName = "SocketIOFrameworkTests.xctest"
+               BlueprintName = "SocketIOFrameworkTests"
                ReferencedContainer = "container:SocketIO.xcodeproj">
             </BuildableReference>
          </TestableReference>
