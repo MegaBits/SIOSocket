@@ -30,6 +30,7 @@ static NSString *SIOMD5(NSString *string) {
 
 @interface SIOSocket ()
 
+@property (nonatomic, strong) NSThread *thread;
 @property UIWebView *javascriptWebView;
 @property (readonly) JSContext *javascriptContext;
 
@@ -63,6 +64,7 @@ static NSString *SIOMD5(NSString *string) {
     }];
 
     socket.javascriptContext[@"window"][@"onload"] = ^() {
+        socket.thread = [NSThread currentThread];
         [socket.javascriptContext evaluateScript: socket_io_js];
         [socket.javascriptContext evaluateScript: blob_factory_js];
         
@@ -176,9 +178,11 @@ static NSString *SIOMD5(NSString *string) {
         }
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]]];
-    });
+    [self performSelector:@selector(evaluateArguments:) onThread:self.thread withObject:[arguments copy] waitUntilDone:YES];
+}
+
+- (void)evaluateArguments:(NSArray *)args {
+    [self.javascriptContext evaluateScript: [NSString stringWithFormat: @"objc_socket.emit(%@);", [args componentsJoinedByString: @", "]]];
 }
 
 - (void)close {
