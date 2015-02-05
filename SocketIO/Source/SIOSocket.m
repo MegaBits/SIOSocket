@@ -174,7 +174,11 @@ static NSString *SIOMD5(NSString *string) {
             [arguments addObject: [NSString stringWithFormat: @"blob('%@')", dataString]];
         }
         else if ([arg isKindOfClass: [NSArray class]] || [arg isKindOfClass: [NSDictionary class]]) {
-            [arguments addObject: [[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject: arg options: 0 error: nil] encoding: NSUTF8StringEncoding]];
+            if ([NSJSONSerialization isValidJSONObject:arg]) {
+                [arguments addObject: [[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject: arg options: 0 error: nil] encoding: NSUTF8StringEncoding]];
+            } else {
+                NSLog(@"SIOSocket serialization error at %@", NSStringFromSelector(_cmd));
+            }
         }
     }
     
