@@ -182,7 +182,9 @@ static NSString *SIOMD5(NSString *string) {
         }
     }
     
-    [self performSelector:@selector(evaluateArguments:) onThread:self.thread withObject:[arguments copy] waitUntilDone:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self performSelector:@selector(evaluateArguments:) onThread:self.thread withObject:[arguments copy] waitUntilDone:YES];
+    });
 }
 
 - (void)evaluateArguments:(NSArray *)args {
