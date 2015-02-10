@@ -93,6 +93,13 @@ static NSString *SIOMD5(NSString *string) {
                     weakSocket.onConnect();
             });
         };
+        
+        socket.javascriptContext[@"objc_onConnectError"] = ^(NSDictionary *errorDictionary) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSocket.onConnectError)
+                    weakSocket.onConnectError(errorDictionary);
+            });
+        };
 
         socket.javascriptContext[@"objc_onDisconnect"] = ^() {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -203,12 +210,11 @@ static NSString *SIOMD5(NSString *string) {
         }
     }
 
-    NSString* script = [NSString stringWithFormat: @"objc_socket.emit(%@);", [args componentsJoinedByString: @", "]];
+    NSString* script = [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]];
     [self performSelector:@selector(evaluateScript:) onThread:_thread withObject:[script copy] waitUntilDone:NO];
 }
 
 - (void)evaluateScript:(NSString *)script {
-    NSLog(@"socket evaluate script: %@", script);
     [self.javascriptContext evaluateScript:script];
 }
 
