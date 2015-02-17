@@ -28,6 +28,7 @@ typedef NSArray SIOParameterArray;
 
 // Event responders
 @property (nonatomic, copy) void (^onConnect)();
+@property (nonatomic, copy) void (^onConnectError)(NSDictionary *errorInfo);
 @property (nonatomic, copy) void (^onDisconnect)();
 @property (nonatomic, copy) void (^onError)(NSDictionary *errorInfo);
 
