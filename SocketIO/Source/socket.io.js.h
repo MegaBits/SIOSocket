@@ -16,7 +16,7 @@ static NSString *const socket_io_js = @"!function(e){if(\"object\"==typeof expor
 /*!
  *  socket.io client constructor format.
  */
-static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, NSInteger attemptLimit, NSTimeInterval reconnectionDelay, NSTimeInterval reconnectionDelayMax, NSTimeInterval timeout) {
+static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, NSInteger attemptLimit, NSTimeInterval reconnectionDelay, NSTimeInterval reconnectionDelayMax, NSTimeInterval timeout, NSArray *transports) {
   NSString *constructorFormat = @"io('%@', {  \
       'reconnection': %@,                     \
       'reconnectionAttempts': %@,             \
