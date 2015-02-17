@@ -50,6 +50,17 @@ static NSString *SIOMD5(NSString *string) {
 }
 
 + (void)socketWithHost:(NSString *)hostURL reconnectAutomatically:(BOOL)reconnectAutomatically attemptLimit:(NSInteger)attempts withDelay:(NSTimeInterval)reconnectionDelay maximumDelay:(NSTimeInterval)maximumDelay timeout:(NSTimeInterval)timeout response:(void (^)(SIOSocket *))response {
+    return [self socketWithHost: hostURL
+         reconnectAutomatically: YES
+                   attemptLimit: -1
+                      withDelay: 1
+                   maximumDelay: 5
+                        timeout: 20
+                 withTransports: @[ @"polling", @"websocket" ]
+                       response: response];
+}
+
++ (void)socketWithHost:(NSString *)hostURL reconnectAutomatically:(BOOL)reconnectAutomatically attemptLimit:(NSInteger)attempts withDelay:(NSTimeInterval)reconnectionDelay maximumDelay:(NSTimeInterval)maximumDelay timeout:(NSTimeInterval)timeout withTransports:(NSArray*)transports response:(void (^)(SIOSocket *))response {
     SIOSocket *socket = [[SIOSocket alloc] init];
     if (!socket) {
         response(nil);
@@ -71,7 +82,8 @@ static NSString *SIOMD5(NSString *string) {
             attempts,
             reconnectionDelay,
             maximumDelay,
-            timeout
+            timeout,
+            transports
         );
 
         socket.javascriptContext[@"objc_socket"] = [socket.javascriptContext evaluateScript: socketConstructor];

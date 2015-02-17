@@ -54,7 +54,7 @@ Generates a new `SIOSocket` object, begins its connection to the given host, and
 
 The host reachable at the given URL string should be running a valid instance of a socket.io server.
 
-#### `+ (void)socketWithHost:reconnectAutomatically:attemptLimit:withDelay:maximumDelay:timeout:response:`
+#### `+ (void)socketWithHost:reconnectAutomatically:attemptLimit:withDelay:maximumDelay:timeout:withTransports:response:`
 
 - `reconnectAutomatically` whether to reconnect automatically (`YES`)
 - `attemptLimit` number of times to attempt a reconnect (Infinite)
@@ -64,6 +64,7 @@ reconnection (`1`)
 reconnections (`5`). Each attempt increases the reconnection by
 the amount specified by `reconnectionDelay`.
 - `timeout` connection timeout before an `onReconnectionError` event is emitted (`20`)
+- `withTransports` specifies an array of transports for engine.io (default is 'polling', 'websocket').
 
 ## Properties
 
