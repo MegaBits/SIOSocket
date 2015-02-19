@@ -26,7 +26,7 @@ or, in Swift...
 
 ```swift
 // ...
-SIOSocket.socketWithHost("http://localhost:3000") { (socket: SIOSocket) in
+SIOSocket.socketWithHost("http://localhost:3000") { (socket: SIOSocket?) in
     self.socket = socket
 }
 ```
