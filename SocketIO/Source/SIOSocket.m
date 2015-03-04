@@ -198,6 +198,10 @@ static NSString *SIOMD5(NSString *string) {
 }
 
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args {
+	[self emit: event args: nil ack: nil];
+}
+
+- (void)emit:(NSString *)event args:(SIOParameterArray *)args ack:(void (^)(id, id))ackCallback {
     NSMutableArray *arguments = [NSMutableArray arrayWithObject: [NSString stringWithFormat: @"'%@'", event]];
     for (id arg in args) {
         if ([arg isKindOfClass: [NSNull class]]) {
@@ -221,6 +225,20 @@ static NSString *SIOMD5(NSString *string) {
             }
         }
     }
+	
+	if (ackCallback) {
+		u_int32_t random = arc4random();
+		NSString *ackName = [NSString stringWithFormat:@"ack_callback_%u", random];
+		self.javascriptContext[ackName] = ^(JSValue *obj, JSValue *obj2) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				ackCallback(obj, obj2);
+			});
+			dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+				self.javascriptContext[ackName] = nil;
+			});
+		};
+		[arguments addObject:ackName];
+	}
 
     NSString* script = [NSString stringWithFormat: @"objc_socket.emit(%@);", [arguments componentsJoinedByString: @", "]];
     [self performSelector:@selector(evaluateScript:) onThread:_thread withObject:[script copy] waitUntilDone:NO];
