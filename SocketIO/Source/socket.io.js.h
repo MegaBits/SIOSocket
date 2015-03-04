@@ -17,23 +17,25 @@ static NSString *const socket_io_js = @"!function(t){if(\"object\"==typeof expor
 /*!
  *  socket.io client constructor format.
  */
-static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, NSInteger attemptLimit, NSTimeInterval reconnectionDelay, NSTimeInterval reconnectionDelayMax, NSTimeInterval timeout) {
-    NSString *constructorFormat = @"io('%@', {  \
-        'reconnection': %@,                     \
-        'reconnectionAttempts': %@,             \
-        'reconnectionDelay': %d,                \
-        'reconnectionDelayMax': %d,             \
-        'timeout': %d                           \
-    });";
+static NSString *socket_io_js_constructor(NSString *hostURL, BOOL reconnection, NSInteger attemptLimit, NSTimeInterval reconnectionDelay, NSTimeInterval reconnectionDelayMax, NSTimeInterval timeout, NSArray *transports) {
+  NSString *constructorFormat = @"io('%@', {  \
+      'reconnection': %@,                     \
+      'reconnectionAttempts': %@,             \
+      'reconnectionDelay': %d,                \
+      'reconnectionDelayMax': %d,             \
+      'timeout': %d,                          \
+      'transports': [ '%@' ]                  \
+  });";
 
-    return [NSString stringWithFormat: constructorFormat,
-        hostURL,
-        reconnection? @"true" : @"false",
-        (attemptLimit == -1)? @"Infinity" : @(attemptLimit),
-        (int)(reconnectionDelay * MSEC_PER_SEC),
-        (int)(reconnectionDelayMax * MSEC_PER_SEC),
-        (int)(timeout * MSEC_PER_SEC)
-    ];
+  return [NSString stringWithFormat: constructorFormat,
+      hostURL,
+      reconnection? @"true" : @"false",
+      (attemptLimit == -1)? @"Infinity" : @(attemptLimit),
+      (int)(reconnectionDelay * MSEC_PER_SEC),
+      (int)(reconnectionDelayMax * MSEC_PER_SEC),
+      (int)(timeout * MSEC_PER_SEC),
+      [transports componentsJoinedByString:@"', '"]
+  ];
 }
 
 /*!
