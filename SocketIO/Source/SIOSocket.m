@@ -198,7 +198,7 @@ static NSString *SIOMD5(NSString *string) {
 }
 
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args {
-	[self emit: event args: nil ack: nil];
+	[self emit: event args: args ack: nil];
 }
 
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args ack:(void (^)(SIOParameterArray *))ackCallback {
