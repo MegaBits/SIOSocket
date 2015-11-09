@@ -2,7 +2,8 @@
 # SIOSocket
 
 SIOSocket is simple interface for communicating with [Socket.IO 1.0](http://socket.io) from iOS.
-__There is now a [first-party iOS client](http://socket.io/blog/socket-io-on-ios/) for Socket.IO!__ Congrats to the Socket.IO team for a job well done.
+
+__There is now a [first-party iOS client](http://socket.io/blog/socket-io-on-ios/) for Socket.IO!__ (Therefore, this library is no longer being actively developed.) Congrats to the Socket.IO team for a job well done.
 
 ## How to use
 
