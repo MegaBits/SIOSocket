@@ -41,6 +41,7 @@ typedef NSArray SIOParameterArray;
 // Emitters
 - (void)emit:(NSString *)event;
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args;
+- (void)emit:(NSString *)event args:(SIOParameterArray *)args ack:(void (^)(SIOParameterArray *))ackCallback;
 
 - (void)close;
 
